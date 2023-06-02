@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_materi"
+        android:icon="@drawable/ic_materi"
+        android:title="@string/title_materi" />
+    <item
+        android:id="@+id/navigation_kamera"
+        android:icon="@drawable/ic_kamera"
+        android:title="@string/title_kamera" />
+    <item
+        android:id="@+id/navigation_kuis"
+        android:icon="@drawable/ic_kuis"
+        android:title="@string/title_kuis"/>
+</menu>

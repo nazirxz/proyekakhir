@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BottomNavigationTextStyle" parent="Widget.Design.BottomNavigationView">
+        <item name="android:fontFamily">@font/poppinsregular</item> <!-- Ganti dengan font yang diinginkan -->
+        <item name="android:textSize">12sp</item> <!-- Ganti dengan ukuran font yang diinginkan -->
+    </style>
+</resources>
