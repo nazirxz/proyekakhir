@@ -4,4 +4,12 @@
     <string name="title_kuis">Kuis</string>
     <string name="title_materi">Materi</string>
     <string name="title_lens">Scan</string>
+
+<!--halaman scan-->
+    <string name="textResult">Berdasarkan hasil scan jenis Ras yang dimiliki oleh hewan kamu adalah</string>
+    <string name="your_result">Hasil :</string>
+    <string name="check_now">Cek Sekarang</string>
+    <string name="unknown">Tidak Diketahui</string>
+    <string name="nan" translatable="false">NaN</string>
+    <string name="persentase" translatable="false">Persentase</string>
 </resources>
