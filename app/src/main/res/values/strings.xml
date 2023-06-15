@@ -12,4 +12,5 @@
     <string name="unknown">Tidak Diketahui</string>
     <string name="nan" translatable="false">NaN</string>
     <string name="persentase" translatable="false">Persentase</string>
+    <string name="captureimage">Mengambil Gambar</string>
 </resources>
