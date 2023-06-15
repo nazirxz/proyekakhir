@@ -50,7 +50,7 @@
             android:layout_marginTop="70dp"
             android:padding="10dp"
             android:contentDescription="Quiz alt image"
-            android:src="@drawable/kotlin_mascot">
+            android:src="@drawable/kelinci">
 
         </ImageView>
 
