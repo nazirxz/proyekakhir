@@ -115,40 +115,8 @@
             android:text="@string/unknown"
             app:layout_constraintStart_toStartOf="@+id/textView5"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
-            tools:text="Persian" />
+            tools:text="Kucing" />
 
-        <TextView
-            android:id="@+id/tv_result_presentase"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="@string/nan"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-            app:layout_constraintEnd_toEndOf="@+id/imageView5"
-            app:layout_constraintStart_toStartOf="@+id/imageView5"
-            app:layout_constraintTop_toTopOf="@+id/imageView5"
-            tools:text="90.23%" />
-
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginEnd="12dp"
-            android:src="@drawable/circle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView4" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:text="@string/persentase"
-            app:layout_constraintEnd_toEndOf="@+id/imageView5"
-            app:layout_constraintStart_toStartOf="@+id/imageView5"
-            app:layout_constraintTop_toBottomOf="@+id/tv_result_presentase" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

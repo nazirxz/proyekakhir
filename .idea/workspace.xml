@@ -10,10 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b53bdb74-f842-4323-9b93-5d62039218de" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_trophy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/results_bg.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_questions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_questions.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_lens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_lens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +176,21 @@
       <option name="project" value="LOCAL" />
       <updated>1686801990670</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="perbaiki sesi kuis">
+      <created>1686802102077</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1686802102077</updated>
+    </task>
+    <task id="LOCAL-00008" summary="perbaiki sesi kuis">
+      <created>1686802207135</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1686802207135</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -187,6 +200,7 @@
     <MESSAGE value="Adding kuis section" />
     <MESSAGE value="Adding scan (still need to work)" />
     <MESSAGE value="Adding scan v2 (still need to work)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding scan v2 (still need to work)" />
+    <MESSAGE value="perbaiki sesi kuis" />
+    <option name="LAST_COMMIT_MESSAGE" value="perbaiki sesi kuis" />
   </component>
 </project>
