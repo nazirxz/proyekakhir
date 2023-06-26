@@ -32,7 +32,7 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:src="@drawable/kucing"
+        android:src="@drawable/hkucing"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:scaleType="centerCrop" />

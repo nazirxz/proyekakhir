@@ -21,7 +21,7 @@ fun getQuestions(): ArrayList<Question> {
         Question(
             0,
             "Apa nama hewan yang punya bulu lembut dan berkaki empat?",
-            R.drawable.kucing,
+            R.drawable.hkucing,
             "Kucing",
             "Ikan",
             "Ular",
@@ -33,7 +33,7 @@ fun getQuestions(): ArrayList<Question> {
         Question(
             1,
             "Apa yang dilakukan ayam saat pagi hari?",
-            R.drawable.ayam,
+            R.drawable.hayam,
             "Terbang",
             "Berenang",
             "Berkokok",
@@ -46,7 +46,7 @@ fun getQuestions(): ArrayList<Question> {
         Question(
             2,
             "Apa yang dilakukan seekor burung saat ingin terbang?",
-            R.drawable.burung,
+            R.drawable.hburung,
             "Melompat",
             "Berenang",
             "Berjalan",
@@ -59,7 +59,7 @@ fun getQuestions(): ArrayList<Question> {
         Question(
             3,
             "Bagaimana cara kucing berkomunikasi dengan manusia?",
-            R.drawable.kucing,
+            R.drawable.hkucing,
             "Menggonggong",
             "Menari",
             "Mencakar",
@@ -71,7 +71,7 @@ fun getQuestions(): ArrayList<Question> {
         Question(
             4,
             "Apa makanan kesukaan kelinci?",
-            R.drawable.kelinci,
+            R.drawable.hkelinci,
             "Rumput",
             "Ikan",
             "Roti",

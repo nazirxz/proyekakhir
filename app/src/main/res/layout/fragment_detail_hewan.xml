@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:background="@color/white"
-                android:src="@drawable/kucing"
+                android:src="@drawable/hkucing"
                 discrollve:discrollve_alpha="true"
                 discrollve:discrollve_translation="fromLeft|fromBottom" />
 
@@ -73,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:background="@color/white"
-                android:src="@drawable/kucing"
+                android:src="@drawable/hkucing"
                 discrollve:discrollve_alpha="true"
                 discrollve:discrollve_translation="fromLeft|fromBottom" />
 
