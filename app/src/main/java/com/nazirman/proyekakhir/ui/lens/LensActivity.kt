@@ -1,42 +1,46 @@
-package com.nazirman.proyekakhir.ui.lens
-
+import android.app.ActionBar
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.Bundle
-import android.view.MenuItem
-import android.view.View
-import android.view.WindowInsets
-import android.view.WindowManager
-import androidx.appcompat.app.ActionBar
+import android.view.*
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.nazirman.proyekakhir.R
-import com.nazirman.proyekakhir.databinding.ActivityLensBinding
+import com.nazirman.proyekakhir.databinding.FragmentLensBinding
 import com.nazirman.proyekakhir.reduceFileImage
 import com.nazirman.proyekakhir.rotateBitmap
+import com.nazirman.proyekakhir.ui.lens.LensViewModel
+import com.nazirman.proyekakhir.ui.lens.ViewModelFactory
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 
-class LensActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityLensBinding
+class LensActivity: Fragment() {
+    private var _binding: FragmentLensBinding? = null
+    private val binding get() = _binding!!
     private lateinit var lensViewModel: LensViewModel
-    private lateinit var file : Bitmap
+    private lateinit var file: Bitmap
     private var getFile: File? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val actionBar: ActionBar? = supportActionBar
-        actionBar?.apply {
-            setTitle(R.string.title_lens)
-            setDisplayHomeAsUpEnabled(true)
-            setHomeAsUpIndicator(R.drawable.ic_arrow_back_24)
-        }
-        binding = ActivityLensBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentLensBinding.inflate(inflater, container, false)
+        val view = binding.root
+        setupToolbar()
+        return view
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupViewModel()
         showLoading(false)
         showResultView(false)
@@ -44,9 +48,20 @@ class LensActivity : AppCompatActivity() {
         buttonHandler()
     }
 
+
+    private fun setupToolbar() {
+        val actionBar: androidx.appcompat.app.ActionBar? = (activity as AppCompatActivity).supportActionBar
+        actionBar?.apply {
+            setTitle(R.string.title_lens)
+            setDisplayHomeAsUpEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_arrow_back_24)
+        }
+        setHasOptionsMenu(true)
+    }
+
     private fun buttonHandler() {
-        binding.btnBack.setOnClickListener{
-            finish()
+        binding.btnBack.setOnClickListener {
+            requireActivity().finish()
         }
 
         binding.btnUpload.setOnClickListener {
@@ -56,62 +71,55 @@ class LensActivity : AppCompatActivity() {
         }
     }
 
-
     private fun uploadFileImage() {
-        //files
         val file = reduceFileImage(getFile as File)
         val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
         val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
-            "file",file.name,requestImageFile
+            "file", file.name, requestImageFile
         )
-//        lensViewModel.getPredictPet(imageMultipart)
+        // lensViewModel.getPredictPet(imageMultipart)
     }
 
     private fun getResult() {
-
-//        lensViewModel.dataPredict.observe(this){
-//
-//            if(it != null) {
-//                showResultView(true)
-//                if(it.error == null){
-//                    setDataResult(it.breed, it.percentage)
-//                }
-//            }
-//
-//        }
+        // lensViewModel.dataPredict.observe(this) {
+        //     if (it != null) {
+        //         showResultView(true)
+        //         if (it.error == null) {
+        //             setDataResult(it.breed, it.percentage)
+        //         }
+        //     }
+        // }
     }
 
     private fun setDataResult(breed: String?, percentage: String?) {
         binding.tvResultRas.text = breed
-        binding.tvResultPresentase.text ="$percentage%"
     }
 
-
     private fun setupCamera() {
-        val myFile = intent?.getSerializableExtra("picture") as File
-        val isBackCamera = intent.getBooleanExtra("isBackCamera", true)
+        val myFile = requireArguments().getSerializable("picture") as File
+        val isBackCamera = requireArguments().getBoolean("isBackCamera", true)
         val result = rotateBitmap(
             BitmapFactory.decodeFile(myFile.path),
             isBackCamera
         )
         getFile = myFile
 
-//        binding.previewImage.load(result){
-//            crossfade(true)
-//            crossfade(1000)
-//        }
+        // binding.previewImage.load(result) {
+        //     crossfade(true)
+        //     crossfade(1000)
+        // }
     }
 
     private fun setupViewModel() {
-        lensViewModel = ViewModelProvider(this,
-            ViewModelFactory(this)
-        )[LensViewModel::class.java]
+        lensViewModel = ViewModelProvider(
+            this,
+            ViewModelFactory(requireContext())
+        ).get(LensViewModel::class.java)
     }
 
     private fun resultHandler() {
-        //TODO: result FROM ML
+        // TODO: result FROM ML
     }
-
 
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {
@@ -124,41 +132,51 @@ class LensActivity : AppCompatActivity() {
     }
 
     private fun showResultView(b: Boolean) {
-        if(b){
+        if (b) {
             binding.layoutResult.visibility = View.VISIBLE
             binding.btnUpload.visibility = View.GONE
             showLoading(false)
-        }else{
+        } else {
             binding.layoutResult.visibility = View.GONE
             showLoading(true)
         }
     }
 
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
-            finish()
+            requireActivity().finish()
             return true
         }
-        return super.onContextItemSelected(item)
+        return super.onOptionsItemSelected(item)
     }
 
-    public override fun onResume() {
+    override fun onResume() {
         super.onResume()
         hideSystemUI()
     }
 
     private fun hideSystemUI() {
-        @Suppress("DEPRECATION")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.insetsController?.hide(WindowInsets.Type.statusBars())
+            requireActivity().window.insetsController?.hide(WindowInsets.Type.statusBars())
         } else {
-            window.setFlags(
+            requireActivity().window.setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
         }
-        supportActionBar?.hide()
+        requireActivity().actionBar?.hide()
         showLoading(false)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        // Hide keyboard.
+        val inputMethodManager =
+            requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(
+            requireActivity().currentFocus?.windowToken,
+            0
+        )
+        _binding = null
     }
 }
