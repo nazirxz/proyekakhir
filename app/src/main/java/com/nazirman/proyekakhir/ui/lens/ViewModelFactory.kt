@@ -1,9 +1,8 @@
-package com.nazirman.proyekakhir
+package com.nazirman.proyekakhir.ui.lens
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.nazirman.proyekakhir.ui.lens.LensViewModel
 
 class ViewModelFactory( private val context: Context): ViewModelProvider.NewInstanceFactory() {
 

@@ -6,13 +6,13 @@ import android.os.Bundle
 import com.nazirman.proyekakhir.MainActivity
 import com.nazirman.proyekakhir.R
 
-import kotlinx.android.synthetic.main.activity_results.*
+import kotlinx.android.synthetic.main.fragment_results.*
 
 
 class ResultsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_results)
+        setContentView(R.layout.fragment_results)
 
         // Set name on result page
         tvNameResult.text = "Congratulations "

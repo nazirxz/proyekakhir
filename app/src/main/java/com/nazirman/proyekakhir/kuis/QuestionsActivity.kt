@@ -8,7 +8,7 @@ import android.os.Bundle
 import androidx.core.content.ContextCompat
 import com.nazirman.proyekakhir.R
 
-import kotlinx.android.synthetic.main.activity_questions.*
+import kotlinx.android.synthetic.main.fragment_questions.*
 
 var score = 0
 
@@ -20,7 +20,7 @@ class QuestionsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_questions)
+        setContentView(R.layout.fragment_questions)
 
         val allOptions = arrayListOf(tvOption1, tvOption2, tvOption3, tvOption4)
         val questions: ArrayList<Question> = getQuestions()

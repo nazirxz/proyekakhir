@@ -13,6 +13,7 @@ class SplashScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splashscreen)
 
+
         window.setFlags(
             FULL_SCREEN_FLAG,
             FULL_SCREEN_FLAG

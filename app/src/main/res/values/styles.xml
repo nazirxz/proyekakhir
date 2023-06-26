@@ -4,4 +4,21 @@
         <item name="android:fontFamily">@font/poppinsregular</item> <!-- Ganti dengan font yang diinginkan -->
         <item name="android:textSize">12sp</item> <!-- Ganti dengan ukuran font yang diinginkan -->
     </style>
+
+    <style name="Poppin20sp">
+        <item name="android:fontFamily">@font/poppinsregular</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="Poppin12sp">
+        <item name="android:fontFamily">@font/poppinsregular</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="Poppin30sp">
+        <item name="android:fontFamily">@font/poppinsregular</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+    <style name="Poppin40sp">
+        <item name="android:fontFamily">@font/poppinsregular</item>
+        <item name="android:textSize">40sp</item>
+    </style>
 </resources>

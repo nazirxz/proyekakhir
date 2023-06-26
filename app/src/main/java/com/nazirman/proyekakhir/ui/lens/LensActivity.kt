@@ -1,6 +1,5 @@
 package com.nazirman.proyekakhir.ui.lens
 
-import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Build
@@ -13,7 +12,6 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.nazirman.proyekakhir.R
-import com.nazirman.proyekakhir.ViewModelFactory
 import com.nazirman.proyekakhir.databinding.ActivityLensBinding
 import com.nazirman.proyekakhir.reduceFileImage
 import com.nazirman.proyekakhir.rotateBitmap
