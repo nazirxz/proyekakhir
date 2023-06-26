@@ -71,7 +71,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_cam"
-        android:name="com.nazirman.proyekakhir.ui.lens.LensFragment"
+        android:name="com.nazirman.proyekakhir.ui.camera.LensCameraActivity"
         android:label="fragment_cam"
         tools:layout="@layout/fragment_lens_camera">
         <action
