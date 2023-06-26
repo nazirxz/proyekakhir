@@ -8,7 +8,21 @@
     <fragment
         android:id="@+id/navigation_main"
         android:name="com.nazirman.proyekakhir.MainActivity"
-        tools:layout="@layout/activity_main" />
+        tools:layout="@layout/activity_main" >
+        <action
+            android:id="@+id/action_navigation_main_to_detailhewan"
+            app:destination="@+id/navigation_detailhewan"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_detailhewan"
+        android:name="com.nazirman.proyekakhir.ui.hewan.DetailHewan"
+        tools:layout="@layout/fragment_detail_hewan">
+        <action
+            android:id="@+id/action_navigation_detailhewan_to_main"
+            app:destination="@+id/navigation_main"/>
+
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_name"
