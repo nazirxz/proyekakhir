@@ -25,8 +25,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".kuis.QuestionsActivity"/>
-        <activity android:name=".kuis.ResultsActivity"/>
+        <activity android:name="com.nazirman.proyekakhir.ui.kuis.QuestionsActivity"/>
+        <activity android:name="com.nazirman.proyekakhir.ui.kuis.ResultsActivity"/>
+        <activity android:name=".ui.lens.LensActivity"/>
     </application>
 
 </manifest>

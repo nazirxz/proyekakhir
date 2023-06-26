@@ -1,4 +1,4 @@
-package com.nazirman.proyekakhir.kuis
+package com.nazirman.proyekakhir.ui.kuis
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

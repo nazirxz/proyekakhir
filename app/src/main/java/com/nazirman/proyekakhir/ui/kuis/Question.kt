@@ -1,4 +1,4 @@
-package com.nazirman.proyekakhir.kuis
+package com.nazirman.proyekakhir.ui.kuis
 
 import com.nazirman.proyekakhir.R
 
