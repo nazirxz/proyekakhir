@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import com.nazirman.proyekakhir.R
+import com.nazirman.proyekakhir.data.kuis.Question
+import com.nazirman.proyekakhir.data.kuis.getQuestions
 
 import kotlinx.android.synthetic.main.fragment_questions.*
 
@@ -39,7 +41,7 @@ class QuestionsActivity : AppCompatActivity() {
 
             val question = questions[currentQuestionId]
 
-            tvQuestion.text = question.text
+            tvQuestion.text = question.soal
             ivQuestion.setImageResource(question.image)
             progressBar.progress = currentQuestionId
 

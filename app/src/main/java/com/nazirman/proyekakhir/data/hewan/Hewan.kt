@@ -14,5 +14,4 @@ data class Hewan(
     val habitatHewan: String,
     @ColumnInfo(name = "deskripsi")
     val deskripsi: String,
-
     )
