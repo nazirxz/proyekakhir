@@ -14,6 +14,6 @@ interface KuisDao {
     fun getKuis(): Flow<List<Kuis>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(kuis: Kuis)
+    suspend fun insert(kuis: List<Kuis>)
 
 }

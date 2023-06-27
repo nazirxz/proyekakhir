@@ -10,11 +10,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b53bdb74-f842-4323-9b93-5d62039218de" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/data/kuis/KuisDao.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/data/AnimalApllication.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/kuis/KuisViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/kuis/NameFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/kuis/ViewModelFactory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/ProyekAkhirApps.app.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/ProyekAkhirApps.app.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/ProyekAkhirApps.app.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/ProyekAkhirApps.app.unitTest.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/data/hewan/HewanDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/data/hewan/HewanDatabase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/kuis/Question.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/data/kuis/Kuis.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/kuis/QuestionsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/kuis/QuestionsActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/data/HewanDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/data/HewanDatabase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/data/kuis/KuisDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/data/kuis/KuisDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/kuis/Name.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/kuis/QuestionsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/kuis/KuisFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/kuis/ResultsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/kuis/ResultFragment.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,9 +87,11 @@
       <recent name="F:\Proyek Akhir\ProyekAkhirApps\app\src\main\res\drawable-v24" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.nazirman.proyekakhir.data" />
       <recent name="com.nazirman.proyekakhir.ui.lens" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.nazirman.proyekakhir.ui.kuis" />
       <recent name="com.nazirman.proyekakhir.data.kuis" />
       <recent name="com.nazirman.proyekakhir.data.hewan" />
       <recent name="com.nazirman.proyekakhir" />
@@ -273,7 +284,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687790361738</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Add class kuis into database and adding kuis dao">
+      <created>1687824439160</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1687824439160</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -305,6 +323,7 @@
     <MESSAGE value="change navigation_camera name" />
     <MESSAGE value="perbaiki LensActivity.kt" />
     <MESSAGE value="adding database and entity hewan with dao" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding database and entity hewan with dao" />
+    <MESSAGE value="Add class kuis into database and adding kuis dao" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add class kuis into database and adding kuis dao" />
   </component>
 </project>
