@@ -24,10 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name="com.nazirman.proyekakhir.ui.kuis.QuestionsActivity"/>
-        <activity android:name="com.nazirman.proyekakhir.ui.kuis.ResultsActivity"/>
-        <activity android:name=".ui.lens.LensActivity"/>
+    <activity android:name=".MainActivity"/>
     </application>
 
 </manifest>

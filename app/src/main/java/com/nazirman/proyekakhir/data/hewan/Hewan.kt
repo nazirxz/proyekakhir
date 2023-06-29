@@ -9,9 +9,11 @@ data class Hewan(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     @ColumnInfo(name = "namahewan")
-    val namaHewan: String,
+    var namaHewan: String,
     @ColumnInfo(name = "habitathewan")
     val habitatHewan: String,
     @ColumnInfo(name = "deskripsi")
-    val deskripsi: String,
+    var deskripsi: String,
+    @ColumnInfo(name = "gambar")
+    var gambar: Int = 0,
     )
