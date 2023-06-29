@@ -70,8 +70,6 @@ class KuisFragment : Fragment() {
 
             binding.tvQuestion.text = question.soal
             binding.ivQuestion.setImageResource(question.image)
-            binding.progressBar.progress = currentQuestionId
-
             binding.tvOption1.text = question.option1
             binding.tvOption2.text = question.option2
             binding.tvOption3.text = question.option3

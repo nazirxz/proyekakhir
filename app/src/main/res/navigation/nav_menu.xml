@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_menu"
-    app:startDestination="@id/navigation_main">
+    app:startDestination="@id/navigation_materi">
 
     <fragment
-        android:id="@+id/navigation_main"
-        android:name="com.nazirman.proyekakhir.MainActivity"
-        tools:layout="@layout/activity_main" >
+        android:id="@+id/navigation_materi"
+        android:name="com.nazirman.proyekakhir.ui.hewan.HewanFragment"
+        tools:layout="@layout/fragment_hewan" >
         <action
-            android:id="@+id/action_navigation_main_to_detailhewan"
+            android:id="@+id/action_navigation_materi_to_detailhewan"
             app:destination="@+id/navigation_detailhewan"/>
     </fragment>
 
@@ -20,54 +20,54 @@
         tools:layout="@layout/fragment_detail_hewan">
         <action
             android:id="@+id/action_navigation_detailhewan_to_main"
-            app:destination="@+id/navigation_main"/>
+            app:destination="@+id/navigation_materi"/>
 
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_name"
-        android:name="com.nazirman.proyekakhir.ui.kuis.Name"
+        android:id="@+id/navigation_kuis"
+        android:name="com.nazirman.proyekakhir.ui.kuis.NameFragment"
         android:label="fragment_name"
         tools:layout="@layout/fragment_namequestion" >
         <action
-            android:id="@+id/action_navigation_name_to_soalkuis"
+            android:id="@+id/action_navigation_kuis_to_soalkuis"
             app:destination="@id/navigation_soalkuis" />
         <action
-            android:id="@+id/action_navigation_name_to_main"
-            app:destination="@+id/navigation_main" />
+            android:id="@+id/action_navigation_kuis_to_main"
+            app:destination="@+id/navigation_materi" />
     </fragment>
     <fragment
         android:id="@+id/navigation_soalkuis"
-        android:name="com.nazirman.proyekakhir.ui.kuis.QuestionsActivity"
+        android:name="com.nazirman.proyekakhir.ui.kuis.KuisFragment"
         android:label="fragment_soalkuis"
         tools:layout="@layout/fragment_questions">
         <action
             android:id="@+id/action_navigation_soalkuis_to_name"
-            app:destination="@+id/navigation_name"/>
+            app:destination="@+id/navigation_kuis"/>
     </fragment>
     <fragment
         android:id="@+id/navigation_result"
-        android:name="com.nazirman.proyekakhir.ui.kuis.ResultsActivity"
+        android:name="com.nazirman.proyekakhir.ui.kuis.ResultsFragment"
         android:label="fragment_results"
         tools:layout="@layout/fragment_results">
         <action
             android:id="@+id/action_navigation_result_to_name"
-            app:destination="@+id/navigation_name"/>
+            app:destination="@+id/navigation_kuis"/>
         <action
             android:id="@+id/action_navigation_result_to_main"
-            app:destination="@+id/navigation_main"/>
+            app:destination="@+id/navigation_materi"/>
     </fragment>
     <fragment
-        android:id="@+id/navigation_lens"
-        android:name="com.nazirman.proyekakhir.ui.lens.LensActivity"
+        android:id="@+id/navigation_kamera"
+        android:name="com.nazirman.proyekakhir.ui.lens.LensFragment"
         android:label="fragment_lens"
         tools:layout="@layout/fragment_lens">
         <action
-            android:id="@+id/action_navigation_lens_to_cam"
+            android:id="@+id/action_navigation_kamera_to_cam"
             app:destination="@+id/navigation_cam"/>
         <action
-            android:id="@+id/action_navigation_lens_to_main"
-            app:destination="@+id/navigation_main"/>
+            android:id="@+id/action_navigation_kamera_to_main"
+            app:destination="@+id/navigation_materi"/>
     </fragment>
     <fragment
         android:id="@+id/navigation_cam"
@@ -76,10 +76,10 @@
         tools:layout="@layout/fragment_lens_camera">
         <action
             android:id="@+id/action_navigation_cam_to_lens"
-            app:destination="@+id/navigation_lens"/>
+            app:destination="@+id/navigation_kamera"/>
         <action
             android:id="@+id/action_navigation_cam_to_main"
-            app:destination="@+id/navigation_main"/>
+            app:destination="@+id/navigation_materi"/>
     </fragment>
 
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".ui.kuis.QuestionsActivity"
+    tools:context=".ui.kuis.KuisFragment"
     android:orientation="vertical"
     android:background="@color/red">
 
@@ -16,20 +16,6 @@
         android:orientation="vertical"
         android:padding="15dp">
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:indeterminate="false"
-            android:max="5"
-            android:minHeight="30dp"
-            android:padding="13dp"
-            android:progress="2"
-            android:progressTint="@color/colorPrimary">
-
-        </ProgressBar>
 
         <TextView
             android:id="@+id/tvQuestion"

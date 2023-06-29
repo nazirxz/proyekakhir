@@ -6,7 +6,7 @@
     android:gravity="top"
     android:background="@color/red"
     android:orientation="vertical"
-    tools:context=".ui.kuis.ResultsActivity">
+    tools:context=".ui.kuis.ResultsFragment">
 
     <TextView
         android:id="@+id/tvNameResult"

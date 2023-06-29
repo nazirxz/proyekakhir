@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/red"
     android:orientation="vertical"
-    tools:context=".ui.kuis.Name"
+    tools:context=".ui.kuis.NameFragment"
     android:gravity="center">
 
     <TextView

@@ -2,60 +2,73 @@ package com.nazirman.proyekakhir
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.nazirman.proyekakhir.data.hewan.Hewan
-import com.nazirman.proyekakhir.data.hewan.HewanDao
-import com.nazirman.proyekakhir.databinding.ActivityMainBinding
-import com.nazirman.proyekakhir.ui.hewan.DetailHewanFragment
-import com.nazirman.proyekakhir.ui.hewan.HewanAdapter
+import android.view.Menu
+import android.view.MenuItem
+import androidx.navigation.NavController
+import androidx.navigation.NavOptions
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-    private var list: ArrayList<Hewan> = arrayListOf()
-    private var listDetail: ArrayList<Hewan> = arrayListOf()
-
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var HewanDao: HewanDao
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
 
-        binding.rcList.visibility = View.VISIBLE
-        binding.rcList.setHasFixedSize(true)
+        val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
-        showRecyclerList()
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.frame_container) as NavHostFragment
+        navController = navHostFragment.navController
+
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_materi,
+                R.id.navigation_kamera,
+                R.id.navigation_kuis
+            )
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
+
+        navView.setOnNavigationItemSelectedListener { item ->
+            return@setOnNavigationItemSelectedListener onNavItemDestinationSelected(
+                item,
+                navController
+            )
+        }
+
+        supportActionBar?.hide()
     }
 
-    private fun showSelectedGuide(guideSelected: Hewan) {
-        when (guideSelected.namaHewan) {
-            "" -> {
-                showDetailRecyclerList()
-
-            }
-            "" -> {
-                showDetailRecyclerList()
-
-            }
+    private fun onNavItemDestinationSelected(
+        item: MenuItem,
+        navController: NavController
+    ): Boolean {
+        val builder = NavOptions.Builder()
+            .setLaunchSingleTop(true)
+            .setEnterAnim(androidx.navigation.ui.R.anim.nav_default_enter_anim)
+            .setExitAnim(androidx.navigation.ui.R.anim.nav_default_exit_anim)
+            .setPopEnterAnim(androidx.navigation.ui.R.anim.nav_default_pop_enter_anim)
+            .setPopExitAnim(androidx.navigation.ui.R.anim.nav_default_pop_exit_anim)
+        if (item.order and Menu.CATEGORY_SECONDARY == 0) {
+            builder.setPopUpTo(
+                R.id.navigation_materi,
+                false
+            )
+        }
+        val options = builder.build()
+        return try {
+            navController.navigate(item.itemId, null, options)
+            true
+        } catch (e: IllegalArgumentException) {
+            false
         }
     }
-
-    private fun showRecyclerList() {
-        binding.rcList.layoutManager = LinearLayoutManager(this)
-        val HewanAdapter = HewanAdapter(list) // Pass the HewanDao to the adapter
-        binding.rcList.adapter = HewanAdapter
-
-        HewanAdapter.setOnItemClickCallback(object : HewanAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: Hewan) {
-                showSelectedGuide(data)
-            }
-        })
-    }
-
-    private fun showDetailRecyclerList() {
-        binding.rcList.layoutManager = LinearLayoutManager(this)
-        val listHewanDetail = DetailHewanFragment(listDetail)
-        binding.rcList.adapter = listHewanDetail
-    }
 }
+

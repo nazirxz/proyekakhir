@@ -5,17 +5,19 @@
       <config />
     </shared>
   </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b53bdb74-f842-4323-9b93-5d62039218de" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/hewan/DetailHewanFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/hewan/HewanAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/hewan/dummyHewan.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/checksums/sha1-checksums.bin" afterDir="false" />
+    <list default="true" id="b53bdb74-f842-4323-9b93-5d62039218de" name="Changes" comment="adding logic to hewan (still errorr)">
+      <change afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/hewan/HewanFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/hewan/HewanViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/hewan/ViewModelFactory.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_hewan.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/fileHashes.lock" afterDir="false" />
@@ -29,11 +31,22 @@
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/data/hewan/Hewan.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/data/hewan/Hewan.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/data/hewan/HewanDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/data/hewan/HewanDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/hewan/DetailHewanFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/hewan/DetailHewan.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/hewan/HewanAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/hewan/HewanAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/hewan/dummyHewan.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/hewan/dummyHewan.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/kuis/KuisFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/kuis/KuisFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/kuis/NameFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/kuis/NameFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/kuis/ViewModelFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/kuis/ViewModelFactory.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_detail_hewan.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_detail_hewan.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_lens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_lens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_namequestion.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_namequestion.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_questions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_questions.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_results.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_results.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_hewan_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_hewan_list.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +90,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable/hewan" />
@@ -101,6 +115,7 @@
       <recent name="com.nazirman.proyekakhir.ui.lens" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.nazirman.proyekakhir.ui.hewan" />
       <recent name="com.nazirman.proyekakhir.ui.kuis" />
       <recent name="com.nazirman.proyekakhir.data.kuis" />
       <recent name="com.nazirman.proyekakhir.data.hewan" />
@@ -108,7 +123,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="ProyekAkhirApps.app" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -308,7 +323,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687827204859</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="adding logic to hewan (still errorr)">
+      <created>1688026255245</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1688026255245</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -342,6 +364,7 @@
     <MESSAGE value="adding database and entity hewan with dao" />
     <MESSAGE value="Add class kuis into database and adding kuis dao" />
     <MESSAGE value="change question into fragment and adding room database application" />
-    <option name="LAST_COMMIT_MESSAGE" value="change question into fragment and adding room database application" />
+    <MESSAGE value="adding logic to hewan (still errorr)" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding logic to hewan (still errorr)" />
   </component>
 </project>

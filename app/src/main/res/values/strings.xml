@@ -13,4 +13,7 @@
     <string name="nan" translatable="false">NaN</string>
     <string name="persentase" translatable="false">Persentase</string>
     <string name="captureimage">Mengambil Gambar</string>
+    <string name="exit_text">Apakah kamu ingin keluar dari aplikasi?</string>
+    <string name="no">Tidak</string>
+    <string name="yes">Iya</string>
 </resources>

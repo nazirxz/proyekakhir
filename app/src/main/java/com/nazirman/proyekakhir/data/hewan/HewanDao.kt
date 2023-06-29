@@ -14,7 +14,7 @@ interface HewanDao {
         fun getAnimals(): Flow<List<Hewan>>
 
         @Insert(onConflict = OnConflictStrategy.IGNORE)
-        suspend fun insert(Hewan: Hewan)
+        suspend fun insert(hewan: ArrayList<Hewan>)
 
 
 }

@@ -7,7 +7,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.nazirman.proyekakhir.data.hewan.Hewan
 import com.nazirman.proyekakhir.databinding.ItemHewanListBinding
-import kotlinx.android.synthetic.main.activity_splashscreen.view.*
 
 class HewanAdapter(private val resultAnimal: List<Hewan>) : RecyclerView.Adapter<HewanAdapter.ListViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback

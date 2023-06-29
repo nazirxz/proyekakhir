@@ -3,9 +3,10 @@ package com.nazirman.proyekakhir.ui.hewan
 import com.nazirman.proyekakhir.R
 import com.nazirman.proyekakhir.data.hewan.Hewan
 
-class dummyHewan  {
+
+object dummyHewan {
     private val namaHewan = arrayOf("Ayam","Burung")
-    private val deskripsiAyam = " Ayam adalah hewan unggas yang memiliki bulu berwarna-warni. Mereka suka berjalan dengan langkah-ngetap yang lucu dan bisa bertelur untuk membuat anak ayam baru."
+    private val deskripsiAyam = "Ayam adalah hewan unggas yang memiliki bulu berwarna-warni. Mereka suka berjalan dengan langkah-ngetap yang lucu dan bisa bertelur untuk membuat anak ayam baru."
     private val habitatAyam = "Ayam biasanya tinggal di kandang atau peternakan."
 
 
