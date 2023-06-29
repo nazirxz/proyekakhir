@@ -3,7 +3,6 @@ package com.nazirman.proyekakhir.ui.hewan
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.nazirman.proyekakhir.data.hewan.HewanDao
-import com.nazirman.proyekakhir.data.kuis.KuisDao
 
 class ViewModelFactory(private val hewanDao: HewanDao) :
     ViewModelProvider.NewInstanceFactory() {

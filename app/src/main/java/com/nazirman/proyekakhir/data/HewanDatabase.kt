@@ -6,8 +6,6 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.nazirman.proyekakhir.data.hewan.Hewan
 import com.nazirman.proyekakhir.data.hewan.HewanDao
-import com.nazirman.proyekakhir.data.kuis.Kuis
-import com.nazirman.proyekakhir.data.kuis.KuisDao
 
 @Database(
     entities = [Hewan::class],
