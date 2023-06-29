@@ -10,13 +10,13 @@ import com.nazirman.proyekakhir.data.kuis.Kuis
 import com.nazirman.proyekakhir.data.kuis.KuisDao
 
 @Database(
-    entities = [Hewan::class, Kuis::class],
-    version = 1,
+    entities = [Hewan::class],
+    version = 2,
     exportSchema = false
 )
 abstract class HewanDatabase : RoomDatabase() {
     abstract fun hewanDao(): HewanDao
-    abstract fun kuisDao(): KuisDao
+//    abstract fun kuisDao(): KuisDao
     companion object {
         @Volatile
         private var INSTANCE: HewanDatabase? = null

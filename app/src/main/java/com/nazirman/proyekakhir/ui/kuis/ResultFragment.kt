@@ -1,20 +1,15 @@
 package com.nazirman.proyekakhir.ui.kuis
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.nazirman.proyekakhir.MainActivity
 import com.nazirman.proyekakhir.R
 import com.nazirman.proyekakhir.databinding.FragmentResultsBinding
 
-import kotlinx.android.synthetic.main.fragment_results.*
-
-class ResultsFragment : Fragment() {
+class ResultFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

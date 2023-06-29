@@ -42,12 +42,12 @@
         android:label="fragment_soalkuis"
         tools:layout="@layout/fragment_questions">
         <action
-            android:id="@+id/action_navigation_soalkuis_to_name"
-            app:destination="@+id/navigation_kuis"/>
+            android:id="@+id/action_navigation_soalkuis_to_result"
+            app:destination="@+id/navigation_result"/>
     </fragment>
     <fragment
         android:id="@+id/navigation_result"
-        android:name="com.nazirman.proyekakhir.ui.kuis.ResultsFragment"
+        android:name="com.nazirman.proyekakhir.ui.kuis.ResultFragment"
         android:label="fragment_results"
         tools:layout="@layout/fragment_results">
         <action

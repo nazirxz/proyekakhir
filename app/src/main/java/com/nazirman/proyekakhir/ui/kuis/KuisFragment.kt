@@ -8,14 +8,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.nazirman.proyekakhir.R
 import com.nazirman.proyekakhir.data.AnimalApllication
 import com.nazirman.proyekakhir.data.kuis.Kuis
+import com.nazirman.proyekakhir.data.kuis.getKuis
 import com.nazirman.proyekakhir.databinding.FragmentQuestionsBinding
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -23,24 +28,19 @@ import kotlinx.coroutines.flow.onEach
 var score = 0
 class KuisFragment : Fragment() {
     private var currentQuestionId = -1
+
     private var selectedAnswers = mutableMapOf<Int, String>()
 
     private lateinit var binding: FragmentQuestionsBinding
-    private val viewModel: KuisViewModel by activityViewModels {
-        ViewModelFactory(
-            (activity?.application as AnimalApllication).database.kuisDao()
-        )
-    }
-
 
     private val originalOptionTextColor = Color.parseColor("#4A4A4A")
-    private val questions: MutableLiveData<List<Kuis>> = MutableLiveData()
+    private val questions: ArrayList<Kuis> = getKuis()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentQuestionsBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -55,21 +55,20 @@ class KuisFragment : Fragment() {
             binding.tvOption4
         )
 
-        observeKuis()
-
         fun changeQuestion() {
-            val currentQuestions = questions.value ?: return
             // Go to results screen if it's the end of questions Array
-            if (currentQuestionId + 1 == currentQuestions.size) {
-                startActivity(Intent(requireActivity(), ResultsFragment::class.java))
+            if (currentQuestionId + 1 == questions.size) {
+                val navController = findNavController(view)
+                navController.navigate(R.id.action_navigation_soalkuis_to_result)
                 return
             }
             currentQuestionId += 1
 
-            val question = currentQuestions[currentQuestionId]
+            val question = questions[currentQuestionId]
 
             binding.tvQuestion.text = question.soal
             binding.ivQuestion.setImageResource(question.image)
+
             binding.tvOption1.text = question.option1
             binding.tvOption2.text = question.option2
             binding.tvOption3.text = question.option3
@@ -87,7 +86,7 @@ class KuisFragment : Fragment() {
             }
         }
 
-        // Add color changing listener to all options
+        // Add color changing listener in all options
         for (option in allOptions) {
             option.setOnClickListener {
                 resetOptionsColor() // To prevent multi-selection
@@ -100,18 +99,16 @@ class KuisFragment : Fragment() {
                 selectedAnswers[currentQuestionId] = option.text.toString()
             }
         }
-
-        // Initial question when the user presses "Start quiz"
+        // Initial question when user presses "Start quiz"
         changeQuestion()
 
         binding.btnAnswerSubmit.setOnClickListener {
             if (selectedAnswers.containsKey(currentQuestionId)) {
                 // If this is the last question, calculate score
-                if (currentQuestionId + 1 == questions.value?.size) {
-                    val currentSelectedAnswers = selectedAnswers.toList()
-                    val currentQuestions = questions.value ?: return@setOnClickListener
-                    for ((questionIndex, answer) in currentSelectedAnswers) {
-                        if (currentQuestions[questionIndex].jawaban == answer) {
+                if (currentQuestionId + 1 == questions.size) {
+                    for ((questionIndex, answer) in selectedAnswers) {
+                        println("${questionIndex.toString()} ${answer.toString()}")
+                        if (questions[questionIndex].jawaban == answer) {
                             score += 1
                         }
                     }
@@ -121,16 +118,6 @@ class KuisFragment : Fragment() {
                 resetOptionsColor()
             }
         }
-    }
 
-    private fun observeKuis() {
-        viewModel.getKuis().onEach { kuisList ->
-            questions.value = kuisList
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        // Perform any cleanup or resource release operations here
     }
 }

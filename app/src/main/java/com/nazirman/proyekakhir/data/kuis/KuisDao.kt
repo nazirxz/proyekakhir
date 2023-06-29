@@ -10,10 +10,10 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface KuisDao {
 
-    @Query("SELECT * FROM kuis")
-    fun getKuis(): Flow<List<Kuis>>
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(kuis: List<Kuis>)
+////    @Query("SELECT * FROM kuis")
+////    fun getKuis(): Flow<List<Kuis>>
+//
+//    @Insert(onConflict = OnConflictStrategy.IGNORE)
+//    suspend fun insert(kuis: List<Kuis>)
 
 }

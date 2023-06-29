@@ -2,6 +2,7 @@ package com.nazirman.proyekakhir.ui.kuis
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,11 +20,11 @@ import kotlinx.android.synthetic.main.fragment_namequestion.*
 var name = ""
 class NameFragment : Fragment() {
     private lateinit var binding: FragmentNamequestionBinding
-    private val viewModel: KuisViewModel by activityViewModels {
-        ViewModelFactory(
-            (activity?.application as AnimalApllication).database.kuisDao()
-        )
-    }
+//    private val viewModel: KuisViewModel by activityViewModels {
+//        ViewModelFactory(
+//            (activity?.application as AnimalApllication).database.kuisDao()
+//        )
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -104,7 +105,9 @@ class NameFragment : Fragment() {
             )
         )
 
-        viewModel.insertKuis(kuisList)
+//        viewModel.insertKuis(kuisList)
+
+        Log.d("Data ",kuisList.toString())
     }
     override fun onDestroy() {
         super.onDestroy()
