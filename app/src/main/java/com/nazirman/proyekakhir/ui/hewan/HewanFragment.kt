@@ -20,10 +20,6 @@ class HewanFragment : Fragment() {
 
     private var list: ArrayList<Hewan> = arrayListOf()
     private var listDetail: ArrayList<Hewan> = arrayListOf()
-    private val viewModel: HewanViewModel by activityViewModels {
-        ViewModelFactory((activity?.application as AnimalApllication).database.hewanDao())
-    }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,7 +47,7 @@ class HewanFragment : Fragment() {
             }
             "Burung" -> {
                 showDetailRecyclerList()
-                listDetail.add(dummyHewan.listData[0])
+                listDetail.add(dummyHewan.listData[1])
             }
         }
     }

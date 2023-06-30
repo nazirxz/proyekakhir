@@ -1,100 +1,75 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<com.flavienlaurent.discrollview.lib.DiscrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:discrollve="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.hewan.DetailHewan"
-    >
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.hewan.DetailHewan">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|end"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/ic_sound"
-        app:fabSize="normal"
-        app:backgroundTint="@color/white"
-        app:tint="@color/blue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.flavienlaurent.discrollview.lib.DiscrollView
+    <com.flavienlaurent.discrollview.lib.DiscrollViewContent
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:layout_height="wrap_content">
 
-        <com.flavienlaurent.discrollview.lib.DiscrollViewContent
+        <TextView
+            android:id="@+id/nama_hewan"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/nama_hewan"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="@color/blue"
-                android:fontFamily="@font/poppinsbold"
-                android:gravity="center"
-                android:padding="25dp"
-                android:text="Nama Hewan"
-                android:textColor="@android:color/white"
-                android:textSize="25sp" />
+            android:layout_height="100dp"
+            android:background="@color/blue"
+            android:fontFamily="@font/poppinsbold"
+            android:gravity="center"
+            android:padding="25dp"
+            android:text="Nama Hewan"
+            android:textColor="@android:color/white"
+            android:textSize="25sp" />
 
 
-            <ImageView
-                android:id="@+id/gambar_hewan"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="@color/white"
-                android:src="@drawable/hkucing"
-                discrollve:discrollve_alpha="true"
-                discrollve:discrollve_translation="fromLeft|fromBottom" />
+        <ImageView
+            android:id="@+id/gambar_hewan"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/white"
+            android:src="@drawable/hkucing"
+            discrollve:discrollve_alpha="true"
+            discrollve:discrollve_translation="fromLeft|fromBottom" />
 
 
-            <TextView
-                android:id="@+id/keteranganHewan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/purple"
-                android:fontFamily="serif"
-                android:gravity="center"
-                android:padding="20dp"
-                android:textColor="@color/white"
-                android:text="Kucing adalah hewan peliharaan yang lucu dan lincah. Mereka memiliki bulu yang lembut dan mata yang tajam. Kucing suka bermain dengan bola atau tali, dan mereka bisa menjilati diri sendiri dengan lidah yang kasar."
-                android:textSize="18sp"
-                discrollve:discrollve_alpha="true"
-                discrollve:discrollve_translation="fromBottom" />
+        <TextView
+            android:id="@+id/keteranganHewan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/purple"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:padding="20dp"
+            android:textColor="@color/white"
+            android:text="Kucing adalah hewan peliharaan yang lucu dan lincah. Mereka memiliki bulu yang lembut dan mata yang tajam. Kucing suka bermain dengan bola atau tali, dan mereka bisa menjilati diri sendiri dengan lidah yang kasar."
+            android:textSize="18sp"
+            discrollve:discrollve_alpha="true"
+            discrollve:discrollve_translation="fromBottom" />
 
-            <ImageView
-                android:id="@+id/habitat"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="@color/white"
-                android:src="@drawable/hkucing"
-                discrollve:discrollve_alpha="true"
-                discrollve:discrollve_translation="fromLeft|fromBottom" />
+        <ImageView
+            android:id="@+id/habitat"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/white"
+            android:src="@drawable/hkucing"
+            discrollve:discrollve_alpha="true"
+            discrollve:discrollve_translation="fromLeft|fromBottom" />
 
-            <TextView
-                android:id="@+id/keteranganHabitat"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/purple"
-                android:fontFamily="serif"
-                android:gravity="center"
-                android:padding="20dp"
-                android:textColor="@color/white"
-                android:text="Kucing adalah hewan peliharaan yang lucu dan lincah. Mereka memiliki bulu yang lembut dan mata yang tajam. Kucing suka bermain dengan bola atau tali, dan mereka bisa menjilati diri sendiri dengan lidah yang kasar."
-                android:textSize="18sp"
-                discrollve:discrollve_alpha="true"
-                discrollve:discrollve_translation="fromLeft" />
+        <TextView
+            android:id="@+id/keteranganHabitat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/purple"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:padding="20dp"
+            android:textColor="@color/white"
+            android:text="Kucing adalah hewan peliharaan yang lucu dan lincah. Mereka memiliki bulu yang lembut dan mata yang tajam. Kucing suka bermain dengan bola atau tali, dan mereka bisa menjilati diri sendiri dengan lidah yang kasar."
+            android:textSize="18sp"
+            discrollve:discrollve_alpha="true"
+            discrollve:discrollve_translation="fromLeft" />
 
 
 
-
-
-        </com.flavienlaurent.discrollview.lib.DiscrollViewContent>
-    </com.flavienlaurent.discrollview.lib.DiscrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </com.flavienlaurent.discrollview.lib.DiscrollViewContent>
+</com.flavienlaurent.discrollview.lib.DiscrollView>

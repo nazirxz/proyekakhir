@@ -10,10 +10,12 @@ data class Hewan(
     val id: Int = 0,
     @ColumnInfo(name = "namahewan")
     var namaHewan: String,
-    @ColumnInfo(name = "habitathewan")
-    val habitatHewan: String,
     @ColumnInfo(name = "deskripsi")
     var deskripsi: String,
+    @ColumnInfo(name = "keteranganHabitat")
+    var keteranganHabitat: String,
     @ColumnInfo(name = "gambar")
     var gambar: Int = 0,
+    @ColumnInfo(name = "gambarHabitat")
+    var gambarHabitat: Int = 0,
     )

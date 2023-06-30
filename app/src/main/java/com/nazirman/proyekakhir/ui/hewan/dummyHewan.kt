@@ -25,14 +25,19 @@ object dummyHewan {
     private val gambarHewan = arrayOf<Int>(R.drawable.hayam,
         R.drawable.hburung)
 
+    private val gambarHabitat = arrayOf<Int>(R.drawable.hayam,
+        R.drawable.hburung)
+
     val listData: ArrayList<Hewan>
         get() {
             val list = arrayListOf<Hewan>()
             for (position in namaHewan.indices) {
-                val name = Hewan(0,"","","",0)
+                val name = Hewan(0,"","","",0,0)
                 name.namaHewan= namaHewan[position]
                 name.deskripsi = deskripsiHewan[position]
+                name.keteranganHabitat = habitatHewan[position]
                 name.gambar = gambarHewan[position]
+                name.gambarHabitat = gambarHabitat[position]
                 list.add(name)
             }
             return list

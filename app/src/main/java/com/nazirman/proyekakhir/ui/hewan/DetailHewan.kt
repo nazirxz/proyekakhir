@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.nazirman.proyekakhir.R
 import com.nazirman.proyekakhir.data.hewan.Hewan
+import org.w3c.dom.Text
 
 class DetailHewan (private val resultHewan: List<Hewan>) : Adapter<DetailHewan.DetailViewHolder>() {
 
@@ -28,14 +29,21 @@ class DetailHewan (private val resultHewan: List<Hewan>) : Adapter<DetailHewan.D
             .load(itemGuide.gambar)
             .apply(RequestOptions().override(200,200))
             .into(holder.ivPicture)
+        Glide.with(holder.itemView.context)
+            .load(itemGuide.gambarHabitat)
+            .apply(RequestOptions().override(200,200))
+            .into(holder.ivPicture2)
         holder.tvName.text = itemGuide.namaHewan
         holder.tvDescription.text = itemGuide.deskripsi
+        holder.ivHabitat.text = itemGuide.keteranganHabitat
     }
 
     inner class DetailViewHolder(itemView: View) : ViewHolder(itemView) {
         var tvName: TextView = itemView.findViewById(R.id.nama_hewan)
         var tvDescription: TextView = itemView.findViewById(R.id.keteranganHewan)
         var ivPicture: ImageView = itemView.findViewById(R.id.gambar_hewan)
+        var ivPicture2: ImageView = itemView.findViewById(R.id.habitat)
+        var ivHabitat: TextView = itemView.findViewById(R.id.keteranganHabitat)
     }
 
 }
