@@ -58,8 +58,7 @@ class KuisFragment : Fragment() {
         fun changeQuestion() {
             // Go to results screen if it's the end of questions Array
             if (currentQuestionId + 1 == questions.size) {
-                val navController = findNavController(view)
-                navController.navigate(R.id.action_navigation_soalkuis_to_result)
+                findNavController().navigate(R.id.action_navigation_soalkuis_to_result)
                 return
             }
             currentQuestionId += 1

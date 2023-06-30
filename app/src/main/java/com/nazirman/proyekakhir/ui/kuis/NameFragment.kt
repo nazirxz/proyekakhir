@@ -45,8 +45,7 @@ class NameFragment : Fragment() {
                 name = binding.tvName.text.toString()
 
                 addInitialKuisData()
-                val navController = findNavController(view)
-                navController.navigate(R.id.action_navigation_kuis_to_soalkuis)
+                findNavController().navigate(R.id.action_navigation_kuis_to_soalkuis)
             }
         }
     }
