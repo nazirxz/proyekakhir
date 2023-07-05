@@ -39,7 +39,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
-
 class LensFragment : Fragment() {
     private lateinit var binding: FragmentLensBinding
     private lateinit var cameraExecutor: ExecutorService
@@ -118,7 +117,7 @@ class LensFragment : Fragment() {
     private fun captureImage() {
         val imageCapture = imageCapture ?: return
 
-        val outputOptions = ImageCapture.OutputFileOptions.Builder(getOutputFile()).build()
+        val outputOptions = ImageCapture.OutputFileOptions.Builder(createImageFile()).build()
 
         imageCapture.takePicture(
             outputOptions,
@@ -126,78 +125,103 @@ class LensFragment : Fragment() {
             object : ImageCapture.OnImageSavedCallback {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                     val savedUri = outputFileResults.savedUri
-                    val bitmap = BitmapFactory.decodeFile(savedUri?.path)
-                    processImage(bitmap)
+                    val savedFile = File(savedUri?.path)
+                    val bitmap = BitmapFactory.decodeFile(savedFile.absolutePath)
+                    val resizedBitmap = Bitmap.createScaledBitmap(bitmap, 80, 80, true)
+                    val result = recognizeImage(resizedBitmap)
+                    showResult(result)
                 }
 
                 override fun onError(exception: ImageCaptureException) {
-                    exception.printStackTrace()
+                    Log.e("CameraXApp", "Photo capture failed: ${exception.message}", exception)
                 }
-            }
+            })
+    }
+
+    private fun createImageFile(): File {
+        val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+        val storageDir = requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        return File.createTempFile(
+            "JPEG_${timeStamp}_",
+            ".jpg",
+            storageDir
         )
     }
 
-    private fun getOutputFile(): File {
-        val mediaDir = requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
-        return File(mediaDir, "IMG_$timestamp.jpg")
-    }
-
-    private fun processImage(bitmap: Bitmap) {
-        val inputImageBuffer = preprocessImage(bitmap)
-        val outputBuffer = TensorBuffer.createFixedSize(intArrayOf(1, categories.size), DataType.FLOAT32)
-        interpreter.run(inputImageBuffer.buffer, outputBuffer.buffer.rewind())
-
-        val predictions = outputBuffer.floatArray
-        val predictedClassIndex = predictions.indices.maxByOrNull { predictions[it] } ?: -1
-        Log.d("Predicted Class Index",predictedClassIndex.toString())
-        val predictedClass = if (predictedClassIndex != -1) categories[predictedClassIndex] else "Unknown"
-        binding.tvResultRas.text = "$predictedClass"
-    }
-
-    private fun preprocessImage(bitmap: Bitmap): TensorImage {
+    private fun recognizeImage(bitmap: Bitmap): String {
         val resizedBitmap = Bitmap.createScaledBitmap(bitmap, 80, 80, true)
+        val byteBuffer = convertBitmapToByteBuffer(resizedBitmap)
+        val modelOutput = Array(1) { FloatArray(categories.size) }
+        interpreter.run(byteBuffer, modelOutput)
+        val result = modelOutput[0]
+        Log.d("Result",result.toString())
+        val maxIndex = result.indices.maxByOrNull { result[it] } ?: -1
+        Log.d("Max Index",maxIndex.toString())
+        return categories[maxIndex]
+    }
 
-        val inputImage = TensorImage(DataType.FLOAT32)
-        inputImage.load(resizedBitmap)
+    private fun convertBitmapToByteBuffer(bitmap: Bitmap): ByteBuffer {
+        val byteBuffer = ByteBuffer.allocateDirect(80 * 80 * 3 * 4)
+        byteBuffer.order(ByteOrder.nativeOrder())
+        val pixels = IntArray(80 * 80)
+        bitmap.getPixels(pixels, 0, bitmap.width, 0, 0, bitmap.width, bitmap.height)
+        var pixel = 0
+        for (i in 0 until 80) {
+            for (j in 0 until 80) {
+                val pixelValue = pixels[pixel++]
+                byteBuffer.putFloat(((pixelValue shr 16 and 0xFF) - 127) / 255.0f)
+                byteBuffer.putFloat(((pixelValue shr 8 and 0xFF) - 127) / 255.0f)
+                byteBuffer.putFloat(((pixelValue and 0xFF) - 127) / 255.0f)
+            }
+        }
+        return byteBuffer
+    }
 
-        return inputImage
+    private fun showResult(result: String) {
+        binding.tvResultRas.text = result
     }
 
     private fun startCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
-
         cameraProviderFuture.addListener({
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
-
+            val previewImage = binding.cameraView
             val preview = Preview.Builder().build().also {
-                it.setSurfaceProvider(binding.cameraView.surfaceProvider)
+                it.setSurfaceProvider(previewImage.surfaceProvider)
             }
-
             imageCapture = ImageCapture.Builder().build()
 
-            val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+            val cameraSelector =
+                CameraSelector.Builder().requireLensFacing(CameraSelector.LENS_FACING_BACK).build()
 
             try {
                 cameraProvider.unbindAll()
-
                 cameraProvider.bindToLifecycle(
-                    this,
+                    viewLifecycleOwner,
                     cameraSelector,
                     preview,
                     imageCapture
                 )
-
             } catch (exc: Exception) {
-                exc.printStackTrace()
+                Log.e("CameraXApp", "Use case binding failed", exc)
             }
-
         }, ContextCompat.getMainExecutor(requireContext()))
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        if (requestCode == CAMERA_PERMISSION_REQUEST_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                captureImage()
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
         cameraExecutor.shutdown()
-        interpreter.close()
     }
 }
