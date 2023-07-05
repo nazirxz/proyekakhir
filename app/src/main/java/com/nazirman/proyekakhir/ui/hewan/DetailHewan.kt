@@ -20,6 +20,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.nazirman.proyekakhir.R
 import com.nazirman.proyekakhir.data.hewan.Hewan
 import java.util.*
+
 class DetailHewan(private val resultHewan: List<Hewan>) :
     RecyclerView.Adapter<DetailHewan.DetailViewHolder>(), TextToSpeech.OnInitListener {
     private var currentPos: Int = -1
