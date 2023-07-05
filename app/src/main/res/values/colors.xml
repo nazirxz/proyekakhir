@@ -10,4 +10,8 @@
     <color name="bluewhite">#FAFAFC</color>
     <color name="colorPrimary">#417EFF</color>
     <color name="colorOptionBtn">#4A4A4A</color>
+    <color name="item1">#EB5757</color>
+    <color name="item2">#2F80ED</color>
+    <color name="item3">#27AE60</color>
+    <color name="item4">#F2994A</color>
 </resources>

@@ -28,6 +28,7 @@
             android:layout_height="wrap_content"
             android:text="Keterangan hewan"
             android:textSize="14sp"
+            android:textColor="@color/white"
             android:maxLines="2"
             />
 
@@ -38,6 +39,6 @@
         android:src="@drawable/hkucing"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:scaleType="fitXY" />
+        android:scaleType="centerCrop" />
 
 </LinearLayout>

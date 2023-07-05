@@ -121,7 +121,7 @@ class HewanFragment : Fragment() {
     }
     private fun showRecyclerList() {
         binding.rcHewan.layoutManager = LinearLayoutManager(requireContext())
-        val hewanAdapter = HewanAdapter(list)
+        val hewanAdapter = HewanAdapter(requireContext(),list)
         binding.rcHewan.adapter = hewanAdapter
 
         hewanAdapter.setOnItemClickCallback(object : HewanAdapter.OnItemClickCallback {

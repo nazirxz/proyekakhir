@@ -39,16 +39,16 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+
 class LensFragment : Fragment() {
     private lateinit var binding: FragmentLensBinding
     private lateinit var cameraExecutor: ExecutorService
     private lateinit var interpreter: Interpreter
     private val categories = listOf(
-        "kupu-kupu", "kucing", "ayam", "burung", "gajah",
-        "kelinci", "ikan", "kambing", "sapi", "jerapah"
+        "Kupu-kupu", "Kucing", "Ayam", "Burung", "Gajah",
+        "Kelinci", "Ikan", "Kambing", "Sapi", "Jerapah"
     )
     private val CAMERA_PERMISSION_REQUEST_CODE = 100
-    private val CAMERA_IMAGE_REQUEST_CODE = 101
     private var imageCapture: ImageCapture? = null
 
     override fun onCreateView(
@@ -68,7 +68,6 @@ class LensFragment : Fragment() {
         binding.btnUpload.setOnClickListener {
             checkPermissionAndCaptureImage()
         }
-
         loadModel()
         startCamera()
     }
