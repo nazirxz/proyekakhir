@@ -61,7 +61,7 @@ object dummyHewan {
     private val deskripsiRusa = "Rusa adalah hewan mamalia yang memiliki tanduk di kepala. Mereka suka makan rumput dan daun-daunan. Rusa jantan memiliki tanduk yang besar dan digunakan untuk bertarung dalam musim kawin"
     private val habitatRusa = "Rusa biasanya hidup di hutan-hutan dan padang rumput"
 
-    private val deskripsiUlar = " Ular adalah reptil yang panjang dan licin. Mereka tidak memiliki kaki, tetapi bisa meluncur dengan lincah. Ada banyak jenis ular dengan warna, ukuran, dan pola yang berbeda. Beberapa ular bisa berbisa, sementara yang lain tidak berbahaya bagi manusia."
+    private val deskripsiUlar = "Ular adalah reptil yang panjang dan licin. Mereka tidak memiliki kaki, tetapi bisa meluncur dengan lincah. Ada banyak jenis ular dengan warna, ukuran, dan pola yang berbeda. Beberapa ular bisa berbisa, sementara yang lain tidak berbahaya bagi manusia."
     private val habitatUlar = "Ular bisa ditemukan di berbagai habitat seperti hutan, padang rumput, dan lahan basah"
 
     private val deskripsiZebra = "Zebra adalah hewan yang memiliki tubuh berwarna hitam dan putih dengan garis-garis yang khas. Mereka memiliki kaki yang kuat dan bisa berlari dengan cepat. Zebra hidup dalam kawanan besar dan menggunakan garis-garis mereka untuk melindungi diri dari predator. Mereka suka makan rumput dan daun-daunan di padang rumput"
@@ -133,8 +133,8 @@ object dummyHewan {
         R.drawable.hzebra
     )
 
-    private val gambarHabitat = arrayOf<Int>(R.drawable.hayam,
-        R.drawable.hburung,
+    private val gambarHabitat = arrayOf<Int>(R.drawable.habayam,
+        R.drawable.habburung,
         R.drawable.habcicak,
         R.drawable.habdomba,
         R.drawable.habelang,

@@ -16,4 +16,5 @@
     <string name="exit_text">Apakah kamu ingin keluar dari aplikasi?</string>
     <string name="no">Tidak</string>
     <string name="yes">Iya</string>
+    <string name="nama_hewan">Nama Hewan</string>
 </resources>

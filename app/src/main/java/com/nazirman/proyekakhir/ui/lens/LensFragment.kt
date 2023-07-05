@@ -185,7 +185,7 @@ class LensFragment : Fragment() {
 //                Toast.makeText(requireContext(), "Failed to capture image", Toast.LENGTH_SHORT).show()
 //            }
         }
-    
+
 
 //    private fun normalizeImage(bitmap: Bitmap): FloatArray {
 //        val pixels = IntArray(bitmap.width * bitmap.height)

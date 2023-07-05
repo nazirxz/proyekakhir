@@ -27,18 +27,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/btn_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        android:background="@drawable/bg_dark_transparent"
-        android:padding="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_arrow_back_24"
-        tools:ignore="SpeakableTextPresentCheck" />
-
     <Button
         android:id="@+id/btn_upload"
         android:layout_width="wrap_content"

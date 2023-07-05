@@ -5,14 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nazirman.proyekakhir.data.AnimalApllication
 import com.nazirman.proyekakhir.data.hewan.Hewan
 import com.nazirman.proyekakhir.databinding.FragmentHewanBinding
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 
 class HewanFragment : Fragment() {
     private var _binding: FragmentHewanBinding? = null

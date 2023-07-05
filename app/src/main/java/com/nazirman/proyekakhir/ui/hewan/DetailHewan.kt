@@ -1,30 +1,40 @@
 package com.nazirman.proyekakhir.ui.hewan
 
+import android.content.ComponentName
+import android.content.Context
+import android.content.Intent
+import android.content.ServiceConnection
+import android.os.IBinder
+import android.speech.tts.TextToSpeech
+import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.activity.OnBackPressedCallback
-import androidx.navigation.Navigation
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.*
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.nazirman.proyekakhir.R
 import com.nazirman.proyekakhir.data.hewan.Hewan
-import org.w3c.dom.Text
-
-class DetailHewan(private val resultHewan: List<Hewan>) : RecyclerView.Adapter<DetailHewan.DetailViewHolder>() {
+import java.util.*
+class DetailHewan(private val resultHewan: List<Hewan>) :
+    RecyclerView.Adapter<DetailHewan.DetailViewHolder>(), TextToSpeech.OnInitListener {
+    private var currentPos: Int = -1
+    private lateinit var textToSpeech: TextToSpeech
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.fragment_detail_hewan, parent, false)
+        val view: View = LayoutInflater.from(parent.context)
+            .inflate(R.layout.fragment_detail_hewan, parent, false)
+        initializeTextToSpeech(parent.context)
         return DetailViewHolder(view)
     }
 
+    private fun initializeTextToSpeech(context: Context) {
+        textToSpeech = TextToSpeech(context, this)
+    }
     override fun getItemCount(): Int {
         return resultHewan.size
     }
@@ -46,6 +56,32 @@ class DetailHewan(private val resultHewan: List<Hewan>) : RecyclerView.Adapter<D
         holder.tvName.text = itemGuide.namaHewan
         holder.tvDescription.text = itemGuide.deskripsi
         holder.ivHabitat.text = itemGuide.keteranganHabitat
+
+        holder.addFab.setOnClickListener {
+            val text = "${itemGuide.namaHewan}. ${itemGuide.deskripsi}. Habitat. ${itemGuide.keteranganHabitat}."
+            speakOut(text)
+        }
+    }
+
+    private fun speakOut(text: String) {
+        textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null, null)
+    }
+
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS) {
+            val language = Locale("id", "ID")
+            val result = textToSpeech.setLanguage(language)
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e("TTS", "The Language not supported!")
+            } else {
+                if (currentPos != -1) {
+                    val text = resultHewan[currentPos].namaHewan
+                    textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null, null)
+                }
+            }
+        } else {
+            Log.e("TTS", "Initialization failed!")
+        }
     }
 
     inner class DetailViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -54,5 +90,6 @@ class DetailHewan(private val resultHewan: List<Hewan>) : RecyclerView.Adapter<D
         var ivPicture: ImageView = itemView.findViewById(R.id.gambar_hewan)
         var ivPicture2: ImageView = itemView.findViewById(R.id.habitat)
         var ivHabitat: TextView = itemView.findViewById(R.id.keteranganHabitat)
+        var addFab: FloatingActionButton = itemView.findViewById(R.id.add_fab)
     }
 }
