@@ -35,8 +35,8 @@ class HewanFragment : Fragment() {
         showRecyclerList()
     }
 
-    private fun showSelectedGuide(guideSelected: Hewan) {
-        when (guideSelected.namaHewan) {
+    private fun showSelectedHewan(hewanSelected: Hewan) {
+        when (hewanSelected.namaHewan) {
             "Ayam" -> {
                 showDetailRecyclerList()
                 listDetail.add(dummyHewan.listData[0])
@@ -44,6 +44,78 @@ class HewanFragment : Fragment() {
             "Burung" -> {
                 showDetailRecyclerList()
                 listDetail.add(dummyHewan.listData[1])
+            }
+            "Cicak" -> {
+                showDetailRecyclerList()
+                listDetail.add(dummyHewan.listData[2])
+            }
+            "Domba" -> {
+                showDetailRecyclerList()
+                listDetail.add(dummyHewan.listData[3])
+            }
+            "Elang" -> {
+                showDetailRecyclerList()
+                listDetail.add(dummyHewan.listData[4])
+            }
+            "Flamingo" -> {
+                showDetailRecyclerList()
+                listDetail.add(dummyHewan.listData[5])
+            }
+            "Gajah" -> {
+                showDetailRecyclerList()
+                listDetail.add(dummyHewan.listData[6])
+            }
+            "Harimau" -> {
+                showDetailRecyclerList()
+                listDetail.add(dummyHewan.listData[7])
+            }
+            "Ikan" -> {
+                showDetailRecyclerList()
+                listDetail.add(dummyHewan.listData[8])
+            }
+            "Jerapah" -> {
+                showDetailRecyclerList()
+                listDetail.add(dummyHewan.listData[9])
+            }
+            "Kambing" -> {
+                showDetailRecyclerList()
+                listDetail.add(dummyHewan.listData[10])
+            }
+            "Kucing" -> {
+                showDetailRecyclerList()
+                listDetail.add(dummyHewan.listData[11])
+            }
+            "Kelinci" -> {
+                showDetailRecyclerList()
+                listDetail.add(dummyHewan.listData[12])
+            }
+            "Kupu-kupu" -> {
+                showDetailRecyclerList()
+                listDetail.add(dummyHewan.listData[13])
+            }
+            "Sapi" -> {
+                showDetailRecyclerList()
+                listDetail.add(dummyHewan.listData[14])
+            }
+            "Monyet" -> {
+                showDetailRecyclerList()
+                listDetail.add(dummyHewan.listData[15])
+            }
+            "Panda" -> {
+                showDetailRecyclerList()
+                listDetail.add(dummyHewan.listData[16])
+            }
+            "Rusa" -> {
+                showDetailRecyclerList()
+                listDetail.add(dummyHewan.listData[17])
+            }
+            "Ular" -> {
+                showDetailRecyclerList()
+                listDetail.add(dummyHewan.listData[18])
+            }
+            "Zebra" -> {
+                showDetailRecyclerList()
+                listDetail.add(dummyHewan.listData[19])
             }
         }
     }
@@ -54,7 +126,7 @@ class HewanFragment : Fragment() {
 
         hewanAdapter.setOnItemClickCallback(object : HewanAdapter.OnItemClickCallback {
             override fun onItemClicked(data: Hewan) {
-                showSelectedGuide(data)
+                showSelectedHewan(data)
             }
         })
 
