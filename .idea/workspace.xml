@@ -13,29 +13,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b53bdb74-f842-4323-9b93-5d62039218de" name="Changes" comment="Text to speech working">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/habburung.jpg" afterDir="false" />
+    <list default="true" id="b53bdb74-f842-4323-9b93-5d62039218de" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/ProyekAkhirApps.app.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/ProyekAkhirApps.app.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/ProyekAkhirApps.app.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/ProyekAkhirApps.app.unitTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/TFLiteHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/TFLiteHelper.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/hewan/DetailHewan.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/hewan/DetailHewan.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/hewan/HewanFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/hewan/HewanFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/hewan/dummyHewan.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/hewan/dummyHewan.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/lens/LensFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nazirman/proyekakhir/ui/lens/LensFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_detail_hewan.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_detail_hewan.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_lens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_lens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_hewan_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_hewan_list.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +100,7 @@
     <property name="android-custom-viewF:/Proyek Akhir/ProyekAkhirApps/app/src/main/java/com/nazirman/proyekakhir/anim/DiscrollvableRedLayout.java_SELECTED" value="DiscrollvableRedLayout" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/model.tflite" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -429,7 +411,21 @@
       <option name="project" value="LOCAL" />
       <updated>1688358512636</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Update v2">
+      <created>1688529027391</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1688529027392</updated>
+    </task>
+    <task id="LOCAL-00028" summary="add hewan on showSelected Function">
+      <created>1688529201221</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1688529201221</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -445,8 +441,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="bismillah 1 month" />
-    <MESSAGE value="Adding Splash Screen" />
     <MESSAGE value="Adding bottom navigation" />
     <MESSAGE value="Adding kuis section" />
     <MESSAGE value="Adding scan (still need to work)" />
@@ -470,6 +464,8 @@
     <MESSAGE value="fitur deteksi camera is working" />
     <MESSAGE value="LensFragment didnt work / update dummyHewan" />
     <MESSAGE value="Text to speech working" />
-    <option name="LAST_COMMIT_MESSAGE" value="Text to speech working" />
+    <MESSAGE value="Update v2" />
+    <MESSAGE value="add hewan on showSelected Function" />
+    <option name="LAST_COMMIT_MESSAGE" value="add hewan on showSelected Function" />
   </component>
 </project>

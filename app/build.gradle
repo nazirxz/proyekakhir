@@ -30,6 +30,7 @@ android {
     }
     buildFeatures{
         viewBinding true
+        mlModelBinding true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -63,6 +64,8 @@ dependencies {
     // Room libraries
     implementation "androidx.room:room-runtime:$room_version"
     implementation 'com.google.android.gms:play-services-tflite-gpu:16.2.0'
+    implementation 'org.tensorflow:tensorflow-lite-support:0.1.0'
+    implementation 'org.tensorflow:tensorflow-lite-metadata:0.1.0'
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
 
