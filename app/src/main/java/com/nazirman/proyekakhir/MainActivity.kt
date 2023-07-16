@@ -13,10 +13,11 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.nazirman.proyekakhir.ui.hewan.DetailHewan
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
-
+    private lateinit var detailHewanAdapter: DetailHewan
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

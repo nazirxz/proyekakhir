@@ -19,8 +19,17 @@ class ResultFragment : Fragment() {
         val view = binding.root
 
         // Set name on result page
-        binding.tvNameResult.text = "Selamat !"
-        binding.tvScore.text = "Kamu berhasil menjawab dari $score/5 soal"
+        if (score <= 5 ) {
+            binding.tvNameResult.text = "Sayang sekali! "
+            binding.tvScore.text = "Jumlah soal yang Anda jawab dengan benar kurang dari 5. Teruslah berlatih dan semangat!"
+            binding.kuis.visibility = View.GONE
+            binding.unhappy.visibility = View.VISIBLE
+        } else {
+            binding.tvNameResult.text = "Selamat !"
+            binding.tvScore.text = "Kamu berhasil menjawab dari $score/10 soal"
+            binding.unhappy.visibility = View.GONE
+            binding.kuis.visibility = View.VISIBLE
+        }
 
         binding.btnFinish.setOnClickListener {
             // Reset the score when the game finishes

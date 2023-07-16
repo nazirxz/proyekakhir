@@ -101,10 +101,59 @@ class NameFragment : Fragment() {
                 "Roti",
                 "Daging",
                 "Rumput"
-            )
-        )
+            ),
+            Kuis(
+                5,
+                "Hewan apa yang tinggal di hutan dan padang rumput di afrika dan asia?",
+                R.drawable.hgajah,
+                "Gajah",
+                "Harimau",
+                "Sapi",
+                "Panda",
+                "Gajah"
+            ),
+            Kuis(
+                6,
+                "Hewan apa yang memiliki kebiasaan tidur yang lama?",
+                R.drawable.kidguess,
+                "Gajah",
+                "Harimau",
+                "Sapi",
+                "Panda",
+                "Gajah"
+            ),
+            Kuis(
+                7,
+                "Hewan apakah ini yang memiliki garis-garis yang khas bewarna hitam dan putih?",
+                R.drawable.hzebra,
+                "Rusa",
+                "Zebra",
+                "Sapi",
+                "Panda",
+                "Zebra"
+            ),
+            Kuis(
+                8,
+                "Hewan apa yang memiliki sayap berwarna-warni dan indah ?",
+                R.drawable.hkupu2,
+                "Gajah",
+                "Zebra",
+                "Sapi",
+                "Kupu-kupu",
+                "Kupu-kupu"
+            ),
 
-//        viewModel.insertKuis(kuisList)
+            Kuis(
+                9,
+                "Hewan apa yang disebut kucing terbesar di dunia ?",
+                R.drawable.hharimau,
+                "Gajah",
+                "Harimau",
+                "Sapi",
+                "Kucing",
+                "Harimau"
+            ),
+        )
 
         Log.d("Data ",kuisList.toString())
     }
