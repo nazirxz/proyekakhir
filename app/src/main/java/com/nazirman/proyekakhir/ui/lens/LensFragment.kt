@@ -7,6 +7,8 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.media.MediaPlayer
+import android.opengl.Visibility
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
@@ -14,6 +16,7 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ProgressBar
@@ -39,7 +42,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
-
 class LensFragment : Fragment() {
     private lateinit var binding: FragmentLensBinding
     private lateinit var cameraExecutor: ExecutorService
@@ -50,6 +52,10 @@ class LensFragment : Fragment() {
     )
     private val CAMERA_PERMISSION_REQUEST_CODE = 100
     private var imageCapture: ImageCapture? = null
+    private val animalsWithSound = listOf(
+        "Kucing", "Ayam", "Burung", "Gajah",
+        "Kelinci", "Kambing", "Sapi", "Jerapah"
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -64,7 +70,8 @@ class LensFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         cameraExecutor = Executors.newSingleThreadExecutor()
-
+        binding.tvResultRas.visibility = View.GONE
+        binding.btnSuara.visibility = View.GONE
         binding.btnUpload.setOnClickListener {
             checkPermissionAndCaptureImage()
         }
@@ -73,27 +80,29 @@ class LensFragment : Fragment() {
     }
 
     private fun loadModel() {
-        val modelFile = "model.tflite" // Replace with your model file name
         try {
-            interpreter = Interpreter(loadModelFile(modelFile))
+            val modelFile = "model.tflite" // Replace with your model file name
+            val modelBuffer = context?.assets?.open(modelFile)?.use { inputStream ->
+                val fileSize = inputStream.available()
+                ByteBuffer.allocateDirect(fileSize).apply {
+                    order(ByteOrder.nativeOrder())
+                    val buffer = ByteArray(4096)
+                    var bytesRead: Int
+                    while (inputStream.read(buffer).also { bytesRead = it } != -1) {
+                        put(buffer, 0, bytesRead)
+                    }
+                    rewind()
+                }
+            }
+            if (modelBuffer != null) {
+                interpreter = Interpreter(modelBuffer)
+            } else {
+                Log.e("LensFragment", "Error loading model.")
+            }
         } catch (e: IOException) {
             e.printStackTrace()
+            Log.e("LensFragment", "Error loading model.")
         }
-    }
-
-    private fun loadModelFile(modelFile: String): ByteBuffer {
-        val assetManager = requireContext().assets
-        val inputStream = assetManager.open(modelFile)
-        val fileSize = inputStream.available()
-        val modelBuffer = ByteBuffer.allocateDirect(fileSize)
-        modelBuffer.order(ByteOrder.nativeOrder())
-        val buffer = ByteArray(4096)
-        var bytesRead: Int
-        while (inputStream.read(buffer).also { bytesRead = it } != -1) {
-            modelBuffer.put(buffer, 0, bytesRead)
-        }
-        inputStream.close()
-        return modelBuffer
     }
 
     private fun checkPermissionAndCaptureImage() {
@@ -125,9 +134,8 @@ class LensFragment : Fragment() {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                     val savedUri = outputFileResults.savedUri
                     val savedFile = File(savedUri?.path)
-                    val bitmap = BitmapFactory.decodeFile(savedFile.absolutePath)
-                    val resizedBitmap = Bitmap.createScaledBitmap(bitmap, 80, 80, true)
-                    val result = recognizeImage(resizedBitmap)
+                    val bitmap = BitmapFactory.decodeFile(savedFile?.absolutePath)
+                    val result = recognizeImage(bitmap)
                     showResult(result)
                 }
 
@@ -153,9 +161,7 @@ class LensFragment : Fragment() {
         val modelOutput = Array(1) { FloatArray(categories.size) }
         interpreter.run(byteBuffer, modelOutput)
         val result = modelOutput[0]
-        Log.d("Result",result.toString())
         val maxIndex = result.indices.maxByOrNull { result[it] } ?: -1
-        Log.d("Max Index",maxIndex.toString())
         return categories[maxIndex]
     }
 
@@ -168,16 +174,59 @@ class LensFragment : Fragment() {
         for (i in 0 until 80) {
             for (j in 0 until 80) {
                 val pixelValue = pixels[pixel++]
-                byteBuffer.putFloat(((pixelValue shr 16 and 0xFF) - 127) / 255.0f)
-                byteBuffer.putFloat(((pixelValue shr 8 and 0xFF) - 127) / 255.0f)
-                byteBuffer.putFloat(((pixelValue and 0xFF) - 127) / 255.0f)
+                // Extract the RGB values from the pixel
+                val r = (pixelValue shr 16 and 0xFF).toFloat()
+                val g = (pixelValue shr 8 and 0xFF).toFloat()
+                val b = (pixelValue and 0xFF).toFloat()
+                // Normalize the RGB values to range [-1, 1]
+                byteBuffer.putFloat(r / 255.0f)
+                byteBuffer.putFloat(g / 255.0f)
+                byteBuffer.putFloat(b / 255.0f)
             }
         }
         return byteBuffer
     }
 
     private fun showResult(result: String) {
+        binding.tvResultRas.visibility = View.VISIBLE
         binding.tvResultRas.text = result
+
+        // Check if the result matches any animal categories
+        val matchedCategory = categories.indexOf(result)
+
+        // Show/hide the "btn_suara" and set its click listener
+        if (matchedCategory != -1) {
+            if (animalsWithSound.contains(result)) {
+                binding.btnSuara.visibility = View.VISIBLE
+                binding.btnSuara.setOnClickListener {
+                    // Handle the button click here
+                    // For example, you can play the corresponding sound using MediaPlayer
+                    val soundResId = when (matchedCategory) {
+                        1 -> R.raw.kucing_sound
+                        2 -> R.raw.ayam_sound
+                        3 -> R.raw.burung_sound
+                        4 -> R.raw.gajah_sound
+                        5 -> R.raw.kelinci_sound
+                        7 -> R.raw.kambing_sound
+                        8 -> R.raw.sapi_sound
+                        9 -> R.raw.jerapah_sound
+                        else -> 0 // Replace with default sound resource or handle unknown cases
+                    }
+                    if (soundResId != 0) {
+                        playSound(soundResId)
+                    }
+                }
+            } else {
+                binding.btnSuara.visibility = View.GONE
+            }
+        } else {
+            binding.btnSuara.visibility = View.GONE
+        }
+    }
+
+    private fun playSound(soundResId: Int) {
+        val mediaPlayer = MediaPlayer.create(requireContext(), soundResId)
+        mediaPlayer.start()
     }
 
     private fun startCamera() {

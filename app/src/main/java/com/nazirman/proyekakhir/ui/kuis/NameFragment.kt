@@ -20,12 +20,6 @@ import kotlinx.android.synthetic.main.fragment_namequestion.*
 var name = ""
 class NameFragment : Fragment() {
     private lateinit var binding: FragmentNamequestionBinding
-//    private val viewModel: KuisViewModel by activityViewModels {
-//        ViewModelFactory(
-//            (activity?.application as AnimalApllication).database.kuisDao()
-//        )
-//    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -44,7 +38,10 @@ class NameFragment : Fragment() {
             } else {
                 name = binding.tvName.text.toString()
 
+                // Call the function to initialize the quiz data
                 addInitialKuisData()
+
+                // Navigate to KuisFragment
                 findNavController().navigate(R.id.action_navigation_kuis_to_soalkuis)
             }
         }

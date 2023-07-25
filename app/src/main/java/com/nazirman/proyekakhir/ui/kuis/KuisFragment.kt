@@ -1,6 +1,7 @@
 package com.nazirman.proyekakhir.ui.kuis
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -27,14 +29,13 @@ import kotlinx.coroutines.flow.onEach
 
 var score = 0
 class KuisFragment : Fragment() {
-    private var currentQuestionId = -1
-
-    private var selectedAnswers = mutableMapOf<Int, String>()
-
+    private var currentQuestionId = 0
     private lateinit var binding: FragmentQuestionsBinding
-
-    private val originalOptionTextColor = Color.parseColor("#4A4A4A")
     private val questions: ArrayList<Kuis> = getKuis()
+    private val selectedAnswers = mutableMapOf<Int, String>()
+    private val originalOptionTextColor: ColorStateList by lazy {
+        binding.tvOption1.textColors // Use any option text view to get the original color
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,23 +56,22 @@ class KuisFragment : Fragment() {
             binding.tvOption4
         )
 
+
         fun changeQuestion() {
-            // Go to results screen if it's the end of questions Array
-            if (currentQuestionId + 1 == questions.size) {
-                findNavController().navigate(R.id.action_navigation_soalkuis_to_result)
-                return
+            if (currentQuestionId < questions.size) {
+                val question = questions[currentQuestionId]
+
+                binding.tvQuestion.text = question.soal
+                binding.ivQuestion.setImageResource(question.image)
+
+                binding.tvOption1.text = question.option1
+                binding.tvOption2.text = question.option2
+                binding.tvOption3.text = question.option3
+                binding.tvOption4.text = question.option4
+            } else {
+                // All questions have been answered, navigate to ResultFragment
+                navigateToResultFragment()
             }
-            currentQuestionId += 1
-
-            val question = questions[currentQuestionId]
-
-            binding.tvQuestion.text = question.soal
-            binding.ivQuestion.setImageResource(question.image)
-
-            binding.tvOption1.text = question.option1
-            binding.tvOption2.text = question.option2
-            binding.tvOption3.text = question.option3
-            binding.tvOption4.text = question.option4
         }
 
         fun resetOptionsColor() {
@@ -98,25 +98,30 @@ class KuisFragment : Fragment() {
                 selectedAnswers[currentQuestionId] = option.text.toString()
             }
         }
+
         // Initial question when user presses "Start quiz"
         changeQuestion()
 
         binding.btnAnswerSubmit.setOnClickListener {
             if (selectedAnswers.containsKey(currentQuestionId)) {
-                // If this is the last question, calculate score
-                if (currentQuestionId + 1 == questions.size) {
-                    for ((questionIndex, answer) in selectedAnswers) {
-                        println("${questionIndex.toString()} ${answer.toString()}")
-                        if (questions[questionIndex].jawaban == answer) {
-                            score += 1
-                        }
-                    }
+                val selectedAnswer = selectedAnswers[currentQuestionId]
+                val correctAnswer = questions[currentQuestionId].jawaban
+                if (selectedAnswer == correctAnswer) {
+                    score += 1
                 }
-                // Change question and options
+
+                // Move to the next question
+                currentQuestionId += 1
                 changeQuestion()
                 resetOptionsColor()
             }
         }
+    }
 
+    private fun navigateToResultFragment() {
+        // Navigate to ResultFragment and pass the score as an argument
+        val bundle = Bundle()
+        bundle.putInt("score", score)
+        findNavController().navigate(R.id.action_navigation_soalkuis_to_result, bundle)
     }
 }
