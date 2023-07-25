@@ -133,7 +133,7 @@ object dummyHewan {
         R.drawable.hzebra
     )
 
-    private val gambarHabitat = arrayOf<Int>(R.drawable.habayam,
+    private val gambarHabitat =  arrayOf<Int>(R.drawable.habayam,
         R.drawable.habburung,
         R.drawable.habcicak,
         R.drawable.habdomba,
@@ -144,16 +144,16 @@ object dummyHewan {
         R.drawable.habikan,
         R.drawable.habjerapah,
         R.drawable.habkambing,
-        R.drawable.habkambing,
         R.drawable.habkucing,
+        R.drawable.habkelinci,
         R.drawable.habkupu2,
         R.drawable.habsapi,
         R.drawable.habmonyet,
         R.drawable.habpanda,
         R.drawable.habrusa,
         R.drawable.habular,
-        R.drawable.habzebras)
-
+        R.drawable.habzebras
+    )
     val listData: ArrayList<Hewan>
         get() {
             val list = arrayListOf<Hewan>()

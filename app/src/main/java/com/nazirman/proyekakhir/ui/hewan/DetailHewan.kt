@@ -11,6 +11,8 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AlphaAnimation
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -53,6 +55,30 @@ class DetailHewan(private val resultHewan: List<Hewan>) :
             .load(itemGuide.gambarHabitat)
             .apply(RequestOptions().override(200, 200))
             .into(holder.ivPicture2)
+
+        // Create fade-in animations for the animal images
+        val fadeInAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
+        holder.ivPicture.animation = fadeInAnimation
+        holder.ivPicture2.animation = fadeInAnimation
+
+        // Create fade-in animations for the description TextViews
+        val descriptionTextViewAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
+        holder.tvDescription.animation = descriptionTextViewAnimation
+        holder.ivHabitat.animation = descriptionTextViewAnimation
+
+        // Create fade-in animation for the name TextView
+        val nameTextViewAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
+        holder.tvName.animation = nameTextViewAnimation
+
+        // Add click listeners for the animal images
+        holder.ivPicture.setOnClickListener {
+            val zoomOutAnimation = AnimationUtils.loadAnimation(context, R.anim.zoom_out)
+            holder.ivPicture.startAnimation(zoomOutAnimation)
+        }
+
+        holder.ivPicture2.setOnClickListener {
+            // Add your desired action here when the second image is clicked
+        }
 
         holder.tvName.text = itemGuide.namaHewan
         holder.tvDescription.text = itemGuide.deskripsi
