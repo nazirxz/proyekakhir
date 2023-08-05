@@ -76,10 +76,6 @@ class DetailHewan(private val resultHewan: List<Hewan>) :
             holder.ivPicture.startAnimation(zoomOutAnimation)
         }
 
-        holder.ivPicture2.setOnClickListener {
-            // Add your desired action here when the second image is clicked
-        }
-
         holder.tvName.text = itemGuide.namaHewan
         holder.tvDescription.text = itemGuide.deskripsi
         holder.ivHabitat.text = itemGuide.keteranganHabitat
@@ -118,5 +114,6 @@ class DetailHewan(private val resultHewan: List<Hewan>) :
         var ivPicture2: ImageView = itemView.findViewById(R.id.habitat)
         var ivHabitat: TextView = itemView.findViewById(R.id.keteranganHabitat)
         var addFab: FloatingActionButton = itemView.findViewById(R.id.add_fab)
+
     }
 }

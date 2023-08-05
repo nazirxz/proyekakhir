@@ -61,11 +61,11 @@ fun getKuis(): ArrayList<Kuis> {
             3,
             "Bagaimana cara kucing berkomunikasi dengan manusia?",
             R.drawable.hkucing,
-            "Menggonggong",
+            "Mengeong",
             "Menari",
             "Mencakar",
             "Berlari",
-            "Menggonggong"
+            "Mengeong"
         )
     )
     Kuis.add(

@@ -38,11 +38,13 @@ import java.io.IOException
 import java.io.InputStream
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
+import java.nio.MappedByteBuffer
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 class LensFragment : Fragment() {
+
     private lateinit var binding: FragmentLensBinding
     private lateinit var cameraExecutor: ExecutorService
     private lateinit var interpreter: Interpreter
@@ -82,26 +84,15 @@ class LensFragment : Fragment() {
     private fun loadModel() {
         try {
             val modelFile = "model.tflite" // Replace with your model file name
-            val modelBuffer = context?.assets?.open(modelFile)?.use { inputStream ->
-                val fileSize = inputStream.available()
-                ByteBuffer.allocateDirect(fileSize).apply {
-                    order(ByteOrder.nativeOrder())
-                    val buffer = ByteArray(4096)
-                    var bytesRead: Int
-                    while (inputStream.read(buffer).also { bytesRead = it } != -1) {
-                        put(buffer, 0, bytesRead)
-                    }
-                    rewind()
-                }
-            }
-            if (modelBuffer != null) {
-                interpreter = Interpreter(modelBuffer)
-            } else {
-                Log.e("LensFragment", "Error loading model.")
-            }
-        } catch (e: IOException) {
-            e.printStackTrace()
-            Log.e("LensFragment", "Error loading model.")
+            val modelInputStream = requireContext().assets.open(modelFile)
+            val modelBytes = modelInputStream.readBytes()
+            val buffer = ByteBuffer.allocateDirect(modelBytes.size)
+            buffer.order(ByteOrder.nativeOrder())
+            buffer.put(modelBytes)
+            buffer.rewind()
+            interpreter = Interpreter(buffer as MappedByteBuffer)
+        } catch (e: Exception) {
+            Log.e("LensFragment", "Error loading model: ${e.message}", e)
         }
     }
 
@@ -164,21 +155,23 @@ class LensFragment : Fragment() {
         val maxIndex = result.indices.maxByOrNull { result[it] } ?: -1
         return categories[maxIndex]
     }
-
     private fun convertBitmapToByteBuffer(bitmap: Bitmap): ByteBuffer {
-        val byteBuffer = ByteBuffer.allocateDirect(80 * 80 * 3 * 4)
+        val inputSize = 80 // Modify this if your model requires a different input size
+        val channelSize = 3 // RGB channels
+
+        val byteBuffer = ByteBuffer.allocateDirect(inputSize * inputSize * channelSize * 4)
         byteBuffer.order(ByteOrder.nativeOrder())
-        val pixels = IntArray(80 * 80)
+        val pixels = IntArray(inputSize * inputSize)
         bitmap.getPixels(pixels, 0, bitmap.width, 0, 0, bitmap.width, bitmap.height)
         var pixel = 0
-        for (i in 0 until 80) {
-            for (j in 0 until 80) {
+        for (i in 0 until inputSize) {
+            for (j in 0 until inputSize) {
                 val pixelValue = pixels[pixel++]
                 // Extract the RGB values from the pixel
                 val r = (pixelValue shr 16 and 0xFF).toFloat()
                 val g = (pixelValue shr 8 and 0xFF).toFloat()
                 val b = (pixelValue and 0xFF).toFloat()
-                // Normalize the RGB values to range [-1, 1]
+                // Normalize the RGB values to range [0, 1]
                 byteBuffer.putFloat(r / 255.0f)
                 byteBuffer.putFloat(g / 255.0f)
                 byteBuffer.putFloat(b / 255.0f)
