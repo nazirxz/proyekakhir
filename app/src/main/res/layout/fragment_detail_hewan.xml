@@ -59,12 +59,12 @@
                 android:fontFamily="serif"
                 android:gravity="center"
                 android:padding="20dp"
-                android:textColor="@color/white"
                 android:text="Kucing adalah hewan peliharaan yang lucu dan lincah. Mereka memiliki bulu yang lembut dan mata yang tajam. Kucing suka bermain dengan bola atau tali, dan mereka bisa menjilati diri sendiri dengan lidah yang kasar."
+                android:textColor="@color/white"
                 android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@id/gambar_hewan"
                 discrollve:discrollve_alpha="true"
-                discrollve:discrollve_translation="fromBottom"
-                app:layout_constraintTop_toBottomOf="@id/gambar_hewan" />
+                discrollve:discrollve_translation="fromBottom" />
 
             <ImageView
                 android:id="@+id/habitat"
@@ -84,12 +84,19 @@
                 android:fontFamily="serif"
                 android:gravity="center"
                 android:padding="20dp"
-                android:textColor="@color/white"
                 android:text="Kucing adalah hewan peliharaan yang lucu dan lincah. Mereka memiliki bulu yang lembut dan mata yang tajam. Kucing suka bermain dengan bola atau tali, dan mereka bisa menjilati diri sendiri dengan lidah yang kasar."
+                android:textColor="@color/white"
                 android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@id/habitat"
                 discrollve:discrollve_alpha="true"
-                discrollve:discrollve_translation="fromLeft"
-                app:layout_constraintTop_toBottomOf="@id/habitat" />
+                discrollve:discrollve_translation="fromLeft" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                discrollve:layout_constraintGuide_begin="20dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

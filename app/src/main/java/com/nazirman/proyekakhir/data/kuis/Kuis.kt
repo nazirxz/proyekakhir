@@ -71,13 +71,13 @@ fun getKuis(): ArrayList<Kuis> {
     Kuis.add(
         Kuis(
             4,
-            "Apa makanan kesukaan kelinci?",
+            "Bagaimana kelinci berjalan?",
             R.drawable.hkelinci,
-            "Rumput",
-            "Ikan",
-            "Roti",
-            "Daging",
-            "Rumput"
+            "Berlompat",
+            "Berlari",
+            "Terbang",
+            "Tidur",
+            "Berlompat"
         )
     )
     Kuis.add(

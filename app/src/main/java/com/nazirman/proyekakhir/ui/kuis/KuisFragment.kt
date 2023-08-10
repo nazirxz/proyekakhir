@@ -108,9 +108,12 @@ class KuisFragment : Fragment() {
                 val correctAnswer = questions[currentQuestionId].jawaban
                 if (selectedAnswer == correctAnswer) {
                     score += 1
+                    // Limit score to 10
+                    if (score > 10) {
+                        score = 10
+                    }
                 }
 
-                // Move to the next question
                 currentQuestionId += 1
                 changeQuestion()
                 resetOptionsColor()
@@ -119,9 +122,12 @@ class KuisFragment : Fragment() {
     }
 
     private fun navigateToResultFragment() {
-        // Navigate to ResultFragment and pass the score as an argument
         val bundle = Bundle()
         bundle.putInt("score", score)
         findNavController().navigate(R.id.action_navigation_soalkuis_to_result, bundle)
+
+        // Reset score and currentQuestionId for a new quiz
+        score = 0
+        currentQuestionId = 0
     }
 }
