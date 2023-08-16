@@ -70,7 +70,7 @@ class LensFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.tvPredicted.visibility = View.GONE
         cameraExecutor = Executors.newSingleThreadExecutor()
         binding.tvResultRas.visibility = View.GONE
         binding.btnSuara.visibility = View.GONE
@@ -126,8 +126,8 @@ class LensFragment : Fragment() {
                     val savedUri = outputFileResults.savedUri
                     val savedFile = File(savedUri?.path)
                     val bitmap = BitmapFactory.decodeFile(savedFile?.absolutePath)
-                    val result = recognizeImage(bitmap)
-                    showResult(result)
+                    val (result, confidence) = recognizeImage(bitmap)
+                    showResult(result, confidence)
                 }
 
                 override fun onError(exception: ImageCaptureException) {
@@ -146,14 +146,15 @@ class LensFragment : Fragment() {
         )
     }
 
-    private fun recognizeImage(bitmap: Bitmap): String {
+    private fun recognizeImage(bitmap: Bitmap): Pair<String, Float> {
         val resizedBitmap = Bitmap.createScaledBitmap(bitmap, 80, 80, true)
         val byteBuffer = convertBitmapToByteBuffer(resizedBitmap)
         val modelOutput = Array(1) { FloatArray(categories.size) }
         interpreter.run(byteBuffer, modelOutput)
         val result = modelOutput[0]
         val maxIndex = result.indices.maxByOrNull { result[it] } ?: -1
-        return categories[maxIndex]
+        val confidence = result[maxIndex]
+        return Pair(categories[maxIndex], confidence)
     }
     private fun convertBitmapToByteBuffer(bitmap: Bitmap): ByteBuffer {
         val inputSize = 80 // Modify this if your model requires a different input size
@@ -180,9 +181,15 @@ class LensFragment : Fragment() {
         return byteBuffer
     }
 
-    private fun showResult(result: String) {
+    private fun showResult(result: String, percentage: Float) {
         binding.tvResultRas.visibility = View.VISIBLE
         binding.tvResultRas.text = result
+
+        // Display the predicted percentage in the tv_predicted TextView
+        val limitedPercentage = if (percentage > 1.0f) 1.0f else percentage
+        binding.tvPredicted.visibility = View.VISIBLE
+        binding.tvPredicted.text = "${(limitedPercentage * 100).toInt()}%"
+
 
         // Check if the result matches any animal categories
         val matchedCategory = categories.indexOf(result)

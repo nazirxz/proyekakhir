@@ -114,6 +114,21 @@
             app:layout_constraintTop_toBottomOf="@+id/textView5"
             tools:text="Kucing" />
 
+        <TextView
+            android:id="@+id/tv_predicted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/unknown"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="#3087D6"
+            android:textStyle="bold"
+            android:textSize="35dp"
+            android:layout_marginStart="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView5"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="90%" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
